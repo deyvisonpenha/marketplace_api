@@ -2,7 +2,7 @@ class Api::V1::ProductsController < ApplicationController
 
 before_action :set_product, only: [:show, :update, :destroy]
 
-before_action :require_authorization!, only: [:create, :update, :destroy]
+before_action :require_authorization!, only: [:show, :create, :update, :destroy]
 
 # GET /api/v1/products
 # Listar todos os artigos
