@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class Api::V1::ProductsController < Api::V1::ApiController
 
 before_action :set_product, only: [:show, :update, :destroy]
 
@@ -14,8 +14,8 @@ end
 
 # GET /api/v1/products/1
 def show
-    #render json: @product
-    render json: request.headers["X-User-Token"]
+    render json: { product: @product , message: @message}
+    #render json: request.headers["X-User-Token"]
 end
 
 # POST /api/v1/products
@@ -55,11 +55,13 @@ params.require(:product).permit(:name, :price, :productType, :description, :tags
 end
 
 def require_authorization!
-#unless current_user == @product.vendor
-unless 2 == 2
-    render json: {}, status: :forbidden
-end
-
+    require_authentication!
+    
+    @message = current_user.presence ? 'You are successfully authenticated!' : 'Not Authorized'
+    #render json: { current_user: current_user.try(:email), message: message }
+    # unless 2 == 2
+    #     render json: {}, status: :forbidden
+    # end
 end
 
 end

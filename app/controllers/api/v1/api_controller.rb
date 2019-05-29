@@ -2,7 +2,7 @@ module Api::V1
 
 class ApiController < ApplicationController
 
-    acts_as_token_authentication_handler_for User
+    acts_as_token_authentication_handler_for User, fallback_to_devise: false
    # acts_as_token_authentication_handler_for Product, only: [:show, :create, :update, :destroy]
 
     before_action :require_authentication!

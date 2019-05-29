@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-    #devise_for :users
+    devise_for :users
     #devise_for :users, :controllers => { :products => "api/v1/products" }
 
-  namespace :api do
+  namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :products
       resources :sessions, only: [:create, :destroy, :show]

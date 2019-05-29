@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < Api::V1::ApiController
 
     before_action :require_authorization!, only: [:show, :update, :destroy]
 
@@ -15,7 +15,6 @@ class Api::V1::UsersController < ApplicationController
             head(:unprocessable_entity)
         end
     end
-
 
     # PATCH/PUT /api/v1/products/1
     def update
