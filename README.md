@@ -21,6 +21,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
+rails g migration AddVendorToProduct vendor:references
+rails g migration AddUsertoVendor user:refecences
+
 * ...
 rails generate devise:install
 rails g devise User

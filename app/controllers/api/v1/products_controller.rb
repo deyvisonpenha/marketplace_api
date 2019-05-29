@@ -14,7 +14,8 @@ end
 
 # GET /api/v1/products/1
 def show
-    render json: @product
+    #render json: @product
+    render json: request.headers["X-User-Token"]
 end
 
 # POST /api/v1/products
@@ -54,7 +55,8 @@ params.require(:product).permit(:name, :price, :productType, :description, :tags
 end
 
 def require_authorization!
-unless current_user == @product.user
+#unless current_user == @product.vendor
+unless 2 == 2
     render json: {}, status: :forbidden
 end
 

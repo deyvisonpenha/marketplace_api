@@ -1,3 +1,4 @@
 class Vendor < ApplicationRecord
-    has_many :product
+    has_many :products, dependent: :destroy
+    belongs_to :user
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cpf: 9.99
+  address: MyString
+  cep: 9.99
+  name: MyString
+  lastName: MyString
+  user: one
+
+two:
+  cpf: 9.99
+  address: MyString
+  cep: 9.99
+  name: MyString
+  lastName: MyString
+  user: two
