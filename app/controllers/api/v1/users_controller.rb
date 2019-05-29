@@ -1,10 +1,10 @@
 class Api::V1::UsersController < Api::V1::ApiController
 
-    before_action :require_authorization!, only: [:show, :update, :destroy]
+    before_action :require_authorization!, only: [:index, :show, :update, :destroy]
 
-    def index
-        render json: User.all.as_json(only:[:email, :id]), status: :ok
-    end
+    # def index
+    #     render json: User.all.as_json(only:[:email, :id]), status: :ok
+    # end
 
     def create
         @user = User.new(user_params)
@@ -31,12 +31,6 @@ class Api::V1::UsersController < Api::V1::ApiController
     end
 
     def require_authorization!
-        unless  request.headers["X-User-Token"] == nil || request.headers["X-User-Email"] == nil
-            render json: {}, status: :forbidden
-          end
-    end
-
-    def current_user
-        @user = User.where(email: request.headers["X-User-Email"]).first
+        require_authentication!
     end
 end
